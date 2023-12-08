@@ -5,15 +5,15 @@ const MONGO_URL = process.env.MONGO_URL
 const DB_NAME = process.env.DB_NAME
 
 //Check if you have connected to the database or not
+
 mongoose.connect(MONGO_URL,{
-    dbName : DB_NAME
-    
+    dbName : DB_NAME 
 }).then(
     ()=>{
         console.log('Connected to database.')
     }
-).catch(
-    (err)=>{
+).catch((err)=>{
         console.log('Error connecting to database : ' + err)
-    }
-)
+    })
+
+

@@ -60,7 +60,7 @@ const loginController = asyncHandler(async (req, res) => {
 
 //Retrieve users
 const getUsers = asyncHandler(async(req,res)=>{
-    const user_result = await User.find({}).populate('tasks')
+    const user_result = await User.find().populate('tasks')
     const totalUsers = await User.countDocuments()
     if(!user_result){
         res.status(404).json({message : "User result not retrieved successfully!"})

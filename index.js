@@ -3,7 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 require('dotenv').config()
-require('./db.js')
+const dbConnection = require('./db.js')
 const userRoutes = require('./routes/userRoutes.js')
 const taskRoutes = require('./routes/taskRoutes.js')
 const swagger_UI = require('swagger-ui-express')
@@ -28,3 +28,5 @@ app.get('/',(req,res)=>{
 app.listen(port,()=>{
     console.log(`Server started on port ${port}`)
 })
+
+module.exports = app
