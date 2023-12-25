@@ -29,7 +29,7 @@ const registerController = asyncHandler(async (req, res) => {
     res.status(200).send({ user, user_Id, message: "User created successfully!" })
 })
 
-//login
+//login a User
 const loginController = asyncHandler(async (req, res) => {
     const login_result = await loginSchema.validateAsync(req.body);
     const user = await User.findOne({ email: login_result.email });
@@ -51,7 +51,7 @@ const loginController = asyncHandler(async (req, res) => {
             email: user.email
         }
     },
-        process.env.JWT_SECRET_KEY,
+        process.env.JWT_SECRET_KEY, 
         { expiresIn: "180m" });
     
 

@@ -11,8 +11,7 @@ mongoose.connect(MONGO_URL,{
 }).then(
     ()=>{
         console.log('Connected to database.')
-    }
-).catch((err)=>{
+    }).catch((err)=>{
         console.log('Error connecting to database : ' + err)
     })
 

@@ -20,7 +20,7 @@ const taskSchema = new mongoose.Schema({
        required : true
     },
     name : {
-        type : String,
+        type : mongoose.Schema.Types.ObjectId,
         ref : 'User'
     }
 },
