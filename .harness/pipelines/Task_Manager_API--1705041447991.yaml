@@ -5,7 +5,7 @@ pipeline:
   orgIdentifier: default
   stages:
     - stage:
-        name: Build
+        name: Build Node App
         identifier: Build
         type: CI
         spec:
@@ -19,12 +19,25 @@ pipeline:
                   spec:
                     shell: Sh
                     command: echo "Welcome to Harness CI"
+              - step:
+                  type: Run
+                  name: Run Test
+                  identifier: Run_Test
+                  spec:
+                    shell: Sh
+                    command: |-
+                      npm install 
+                      npm test
           platform:
             os: Linux
             arch: Amd64
           runtime:
             type: Cloud
             spec: {}
+          caching:
+            enabled: false
+            paths: []
+        description: ""
   properties:
     ci:
       codebase:
