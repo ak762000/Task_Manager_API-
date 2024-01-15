@@ -6,20 +6,35 @@ const jwt = require('jsonwebtoken');
 const { userSchema, loginSchema } = require('../helpers/validateData');
 const asyncHandler = require('express-async-handler');
 
+// const redis = require('../helpers/redis')
+// const {promisify} = require('util')
+// const getAsync = promisify(redis.get).bind(redis)
+// const setAsync = promisify(redis.set).bind(redis)
 
-const registerController = asyncHandler(async (req, res) => {
-    
+
+const registerController = asyncHandler(async (req, res) => {  
     const result = await userSchema.validateAsync(req.body);
     console.log(result);
 
+    //Check if the user exists in redis cache
+    // const cachedUser = await getAsync(result.email)
+    // if(cachedUser){
+    //     return res.status(409).json({ message : 'Email already registered! '})
+    // }
+
     const existingUser = await User.findOne({ email: result.email });
     if (existingUser) {
+        //Cache the user details in the Redis
+        //await setAsync(result.email, JSON.stringify(existingUser))
         return res.status(409).json({ error: 'Email already registered' });
     }
 
     // Create user details
     const user = new User(result);
     await user.save();
+
+    //Cache the user details in the redis
+    //await setAsync(result.email, JSON.stringify(user))
 
     // Store the user id
     const user_Id = user._id;

@@ -6,10 +6,10 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "env-cmd ./test.env jest --watch"
+    "test": "jest --watch"
   },
-  "jest" : {
-    "testEnvironment" : "node"
+  "jest": {
+    "testEnvironment": "node"
   },
   "author": "Anurag Krishnan",
   "license": "ISC",
@@ -28,7 +28,8 @@
     "redis": "^4.6.11",
     "supertest": "^6.3.3",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.0"
+    "swagger-ui-express": "^5.0.0",
+    "util": "^0.12.5"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",
