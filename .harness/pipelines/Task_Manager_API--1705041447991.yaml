@@ -1,0 +1,46 @@
+pipeline:
+  name: Build Task_Manager_API-
+  identifier: Build_ak762000_Task_Manager_API__1705041492155
+  projectIdentifier: default_project
+  orgIdentifier: default
+  stages:
+    - stage:
+        name: Build Node App
+        identifier: Build
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Echo Welcome Message
+                  identifier: Echo_Welcome_Message
+                  spec:
+                    shell: Sh
+                    command: echo "Welcome to Harness CI"
+              - step:
+                  type: Run
+                  name: Run Test
+                  identifier: Run_Test
+                  spec:
+                    shell: Sh
+                    command: |-
+                      npm install 
+                      npm test
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          caching:
+            enabled: false
+            paths: []
+        description: ""
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.Github_OAuth_1705041164393
+        repoName: ak762000/Task_Manager_API-
+        build: <+input>

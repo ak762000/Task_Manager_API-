@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_ak762000_Task_Manager_API__1705041197344-push-trigger-input-set
+  identifier: Build_ak762000_Task_Manager_API__1705041197344pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_ak762000_Task_Manager_API__1705041197344
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
